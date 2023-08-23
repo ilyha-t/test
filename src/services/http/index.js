@@ -8,7 +8,22 @@ export default class HttpService {
   };
 
   async getFilmsByQuery(searchMovie) {
-    let response = await fetch(`${BASE_URL}/movie?query=${searchMovie}`, this.Auth);
-    return await response.json();
+    const response = await fetch(`${BASE_URL}/search/movie?query=${searchMovie}`, this.Auth);
+
+    if (response.ok) {
+      return await response.json();
+    } else {
+      throw Error('Error at network request!');
+    }
+  }
+
+  async getGenresList() {
+    const response = await fetch(`${BASE_URL}/genre/movie/list`, this.Auth);
+
+    if (response.ok) {
+      return await response.json();
+    } else {
+      throw Error('Error at network request!');
+    }
   }
 }

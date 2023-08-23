@@ -1,0 +1,17 @@
+.movie {
+  width: 450px;
+  height: 280px;
+  display: flex;
+  box-shadow: 0 4px 12px 0;
+  margin: 0 auto;
+}
+
+.movie__image {
+  height: 100%;
+  width: 180px;
+}
+
+.movie__info {
+  width: calc(100% - 180px);
+  padding-left: 20px;
+}
