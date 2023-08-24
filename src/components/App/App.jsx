@@ -28,7 +28,7 @@ export default class App extends Component {
       .catch(() => this.setState({ exception: true }));
 
     new Promise((resolve) => {
-      const response = this.httpClient.getFilmsByQuery('return');
+      const response = this.httpClient.getFilmsByQuery('love');
       resolve(response);
     })
       .then((response) => {

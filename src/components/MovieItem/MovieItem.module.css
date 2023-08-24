@@ -7,11 +7,38 @@
 }
 
 .movie__image {
-  height: 100%;
   width: 180px;
+  object-fit: cover;
 }
 
 .movie__info {
   width: calc(100% - 180px);
-  padding-left: 20px;
+  padding: 10px 20px;
+}
+
+.movie__title {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.movie__release_date,
+.movie__genres,
+.movie__description {
+  margin-top: 10px;
+}
+
+.movie__release_date {
+  color: #827e7e;
+}
+.movie__description {
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  height: 130px;
+  -webkit-line-clamp: 6; /* Число отображаемых строк */
+  display: -webkit-box; /* Включаем флексбоксы */
+  -webkit-box-orient: vertical; /* Вертикальная ориентация */
+  overflow: hidden; /* Обрезаем всё за пределами блока */
 }

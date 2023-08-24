@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { format, parseISO } from 'date-fns';
 
-// import { IMAGE_URL } from '../../config/config';
+import { IMAGE_URL } from '../../config/config';
 import GenreMovieList from '../GenreMovieTag/List/GenreMovieList';
 
 import cl from './MovieItem.module.css';
+import noImage from './assets/no-image.jpg';
 
 export default class MovieItem extends Component {
   constructor(props) {
@@ -13,9 +15,9 @@ export default class MovieItem extends Component {
     };
   }
 
-  // handleImageError = (e) => {
-  //   e.target.src = 'https://image.tmdb.org/t/p/original/dJ52jV7HlJ9hB8kdBOnj01DllBA.jpg';
-  // };
+  handleImageError = (e) => {
+    e.target.src = noImage;
+  };
 
   matchGenreMovie = () => {
     let genres_name = new Array();
@@ -31,6 +33,14 @@ export default class MovieItem extends Component {
     this.setState({ genres: genres_name });
   };
 
+  translateDate = (date) => {
+    try {
+      return format(parseISO(date), 'MMMM d, y');
+    } catch (e) {
+      return;
+    }
+  };
+
   componentDidMount() {
     this.matchGenreMovie();
   }
@@ -38,17 +48,17 @@ export default class MovieItem extends Component {
   render() {
     return (
       <div className={cl.movie}>
-        {/*<img*/}
-        {/*  src={`${IMAGE_URL}` + this.props.movie.backdrop_path}*/}
-        {/*  alt="Movie Poster"*/}
-        {/*  onError={this.handleImageError}*/}
-        {/*  className={cl.movie__image}*/}
-        {/*/>*/}
+        <img
+          src={`${IMAGE_URL}` + this.props.movie.backdrop_path}
+          alt="Movie Poster"
+          onError={this.handleImageError}
+          className={cl.movie__image}
+        />
         <div className={cl.movie__info}>
-          <h2>{this.props.movie.title}</h2>
-          <span>{this.props.movie.release_date}</span>
+          <h1 className={cl.movie__title}>{this.props.movie.title}</h1>
+          <p className={cl.movie__release_date}>{this.translateDate(this.props.movie.release_date)}</p>
           {this.state.genres.length > 0 ? <GenreMovieList genres={this.state.genres} /> : null}
-          <p>{this.props.movie.overview}</p>
+          <p className={cl.movie__description}>{this.props.movie.overview}</p>
         </div>
       </div>
     );
