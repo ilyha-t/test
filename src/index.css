@@ -9,3 +9,9 @@
   font-family: 'Inter', serif;
   font-weight: 400;
 }
+
+body,
+#root {
+  width: 100%;
+  height: 100vh;
+}

@@ -8,7 +8,7 @@ export default class GenreMovieList extends Component {
   render() {
     return (
       <ul className={cl.genre__list}>
-        {this.props.genres.map((genre) => (
+        {this.props.genres.values.map((genre) => (
           <GenreMovieItem key={genre} genre={genre} />
         ))}
       </ul>

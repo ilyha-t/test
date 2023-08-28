@@ -7,8 +7,8 @@ export default class HttpService {
     },
   };
 
-  async getFilmsByQuery(searchMovie) {
-    const response = await fetch(`${BASE_URL}/search/movie?query=${searchMovie}`, this.Auth);
+  async getFilmsByQuery(searchMovie, pageNumber) {
+    const response = await fetch(`${BASE_URL}/search/movie?query=${searchMovie}&page=${pageNumber}`, this.Auth);
 
     if (response.ok) {
       return await response.json();
